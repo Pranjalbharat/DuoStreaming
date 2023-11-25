@@ -12,6 +12,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
         child: 
             Expanded(
@@ -42,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-       
+      
       ),
     );
   }

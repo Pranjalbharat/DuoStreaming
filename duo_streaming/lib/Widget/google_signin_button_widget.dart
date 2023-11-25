@@ -32,9 +32,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: const Color.fromARGB(255, 2, 2, 2),
-    body:Padding(
+    return Padding(
       padding: const EdgeInsets.fromLTRB(16,80,15,0),
     child:
     _isSigningIn
@@ -114,7 +112,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
             ),
           ),
   
-    ),     
-    );
+    );    
+    
   }
 }
