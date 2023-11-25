@@ -9,6 +9,7 @@ class GoogleSignInButton extends StatefulWidget {
   const GoogleSignInButton({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _GoogleSignInButtonState createState() => _GoogleSignInButtonState();
 }
 
@@ -35,21 +36,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
       backgroundColor: const Color.fromARGB(255, 2, 2, 2),
     body:Padding(
       padding: const EdgeInsets.fromLTRB(16,80,15,0),
-    child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-      
-          
-  
-
-        // Image.asset(
-        //     'images/logo.png', // Replace 'your_image.png' with your image asset path
-        //     height: 150, // Adjust the height of the image
-        //   ),
-
-          //  const SizedBox(height: 50),
-
+    child:
     _isSigningIn
           ? const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
@@ -126,8 +113,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
               ),
             ),
           ),
-      ],
-    ),
+  
     ),     
     );
   }

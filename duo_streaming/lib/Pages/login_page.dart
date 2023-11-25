@@ -1,46 +1,50 @@
 import 'package:duo_streaming/Widget/google_signin_button_widget.dart';
 import 'package:flutter/material.dart';
 
-class loginPage extends StatefulWidget {
-  const loginPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<loginPage> createState() => _loginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _loginPageState extends State<loginPage> {
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body:Center(
-        child:  Column(
-          children: [
-              Text(
-              'Welcome \n to',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 44,
-                color: Colors.white, // Adjust color for visibility
-                fontWeight: FontWeight.bold,
+      body: Center(
+        child: 
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Welcome \n to',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 44,
+                      color: Colors.white, // Adjust color for visibility
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    'DuoStreaming',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: Colors.white, // Adjust color for visibility
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                    GoogleSignInButton(),
+                ],
               ),
             ),
-          
-        Padding(
-          padding: EdgeInsets.only(left: 13),
-          child: Text(
-                'DuoStreaming',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 50,
-                  color: Colors.white, // Adjust color for visibility
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-        ),
-            GoogleSignInButton(),
-          ],
-        ),
-        ),
+       
+      ),
     );
   }
 }
+

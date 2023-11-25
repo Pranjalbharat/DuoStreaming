@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       return MaterialApp(
-      home: const loginPage(),
+      home: const LoginPage(),
       theme: ThemeData(
         // ignore: prefer_const_constructors
         primaryColor: Color.fromARGB(255, 220, 135, 237), // Change the accent color here
