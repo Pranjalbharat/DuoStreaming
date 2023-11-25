@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../Widget/custom_button.dart';
+import '../theme/theme_app.dart';
 import 'create_team.dart';
 import 'join_team.dart';
 
@@ -13,33 +15,38 @@ class _roomPageState extends State<roomPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: const Text('Room Page'),
+        titleTextStyle: const TextStyle(fontSize: 25,
+        fontStyle: FontStyle.italic,
+        fontWeight: FontWeight.bold),
+        backgroundColor: PRIMARY_COLOR,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
+          CustomButton(
+            text: 'Create Team',
+            onPressed: () {
+              Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const CreateTeamPage()),
                 );
-              },
-              child: const Text('Create Team'),
-            ),
+            },
+          ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
+              CustomButton(
+            text: '  Join Team  ',
+            onPressed: () {
+              Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const JoinTeamPage()),
                 );
-              },
-              child: const Text('Join Team'),
-            ),
+            },
+          ),
+        
           ],
         ),
       ),

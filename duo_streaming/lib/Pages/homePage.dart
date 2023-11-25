@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../theme/theme_app.dart';
 import 'current_team.dart';
 
 class HomePage extends StatefulWidget {
@@ -71,8 +72,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: const Text('DuoStreaming'),
+        titleTextStyle: const TextStyle(fontSize: 25,
+        fontStyle: FontStyle.italic,
+        fontWeight: FontWeight.bold),
+        backgroundColor: PRIMARY_COLOR,
       ),
       body: ListView.builder(
         itemCount: songs.length,
@@ -89,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text(
                     songs[index]['title'],
-                    style: const TextStyle(fontSize: 18), // Increase title font size
+                    style: const TextStyle(fontSize: 18,color: Colors.white), // Increase title font size
                   ),
                   Text(
                     songs[index]['singer'],
@@ -98,7 +104,8 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               trailing: IconButton(
-                iconSize: 32, // Increase icon size
+                iconSize: 32,
+                color: Colors.white, // Increase icon size
                   icon: _isPlayingList[index]
                     ? const Icon(Icons.pause)
                     : const Icon(Icons.play_arrow),
@@ -126,6 +133,10 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
+        selectedItemColor: PRIMARY_COLOR,
+        unselectedItemColor: Colors.white,
+        selectedIconTheme: const IconThemeData(color: PRIMARY_COLOR),
         currentIndex: _currentIndex,
         onTap: (int index) {
           setState(() {
@@ -143,14 +154,17 @@ class _HomePageState extends State<HomePage> {
             // You can replace the Navigator logic with your specific routing method
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => CurrentTeamPage()),
+              MaterialPageRoute(builder: (context) => const CurrentTeamPage()),
             );
           }
         },
         items: const [
           BottomNavigationBarItem(
+            
             icon: Icon(Icons.home),
             label: 'Home',
+            
+            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.room),

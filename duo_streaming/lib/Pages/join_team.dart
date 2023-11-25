@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../Widget/custom_button.dart';
+import '../theme/theme_app.dart';
 import 'current_team.dart';
 
 class JoinTeamPage extends StatefulWidget {
@@ -32,11 +34,27 @@ class _JoinTeamPageState extends State<JoinTeamPage> {
     });
   }
 
+    void _navigateToCurrentTeamPage() {
+    if (_isButtonEnabled) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const CurrentTeamPage(),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: const Text('Join Team'),
+        titleTextStyle: const TextStyle(fontSize: 25,
+        fontStyle: FontStyle.italic,
+        fontWeight: FontWeight.bold),
+        backgroundColor: PRIMARY_COLOR,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -46,21 +64,30 @@ class _JoinTeamPageState extends State<JoinTeamPage> {
           children: [
             TextField(
               controller: _roomCodeController,
+              style: const TextStyle(color: Colors.white),
               decoration: const InputDecoration(
-                hintText: 'Enter Room Code',
-              ),
+                      labelText: 'Enter Room Code',
+                      labelStyle: TextStyle(color: Colors.white),
+                      hintText: 'Enter valid room code',
+                      hintStyle: TextStyle(color: Colors.white),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 3,
+                          color: PRIMARY_COLOR,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 3,
+                          color: PRIMARY_COLOR,
+                        ),
+                      ),
+                    ),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _isButtonEnabled
-                  ? () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => CurrentTeamPage()),
-                      );
-                    }
-                  : null,
-              child: const Text('Join'),
+          CustomButton(
+              text: 'Join',
+              onPressed: _navigateToCurrentTeamPage,
             ),
           ],
         ),

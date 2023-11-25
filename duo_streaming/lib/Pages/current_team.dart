@@ -1,16 +1,33 @@
 import 'package:flutter/material.dart';
 
-class CurrentTeamPage extends StatelessWidget {
-  final String roomCode = 'ABC123'; // Replace this with the actual room code
-  final List<String> teamMembers = ['Member 1', 'Member 2', 'Member 3'];
+import '../theme/theme_app.dart';
 
-  CurrentTeamPage({super.key}); // Replace this with actual team members
+class CurrentTeamPage extends StatefulWidget {
+  const CurrentTeamPage({Key? key}) : super(key: key);
+
+  @override
+  _CurrentTeamPageState createState() => _CurrentTeamPageState();
+}
+
+class _CurrentTeamPageState extends State<CurrentTeamPage> {
+  final String roomCode = 'ABC123'; // Replace this with the actual room code
+  final List<String> teamMembers = [
+    'John Doe',
+    'Jane Smith',
+    'Alice Johnson',
+    'Bob Williams'
+  ]; // Replace this with actual team members
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: const Text('Current Team'),
+        titleTextStyle: const TextStyle(fontSize: 25,
+        fontStyle: FontStyle.italic,
+        fontWeight: FontWeight.bold),
+        backgroundColor: PRIMARY_COLOR,
       ),
       body: Center(
         child: Column(
@@ -19,21 +36,21 @@ class CurrentTeamPage extends StatelessWidget {
           children: [
             Text(
               'Room Code: $roomCode',
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 25,color: Colors.white),
             ),
             const SizedBox(height: 20),
             const Text(
               'Team Members:',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 20,color: Colors.white),
             ),
             const SizedBox(height: 10),
             Column(
-              children: teamMembers.map((member) => Text(member)).toList(),
+              children: teamMembers.map((member) => Text(member,style: const TextStyle(color: Colors.white,fontSize: 15),)).toList(),
             ),
             const SizedBox(height: 20),
             const Text(
               'Waiting for host to start...',
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 18),
             ),
           ],
         ),

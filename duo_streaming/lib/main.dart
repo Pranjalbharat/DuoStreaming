@@ -19,8 +19,7 @@ class MyApp extends StatelessWidget {
       return MaterialApp(
       home: const LoginPage(),
       theme: ThemeData(
-        // ignore: prefer_const_constructors
-        primaryColor: Color.fromARGB(255, 220, 135, 237), // Change the accent color here
+      primaryColor: Colors.blue.shade800,// Change the accent color here
       ),
     );
 
