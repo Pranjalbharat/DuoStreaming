@@ -39,7 +39,7 @@ class _JoinTeamPageState extends State<JoinTeamPage> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const CurrentTeamPage(),
+          builder: (context) =>  CurrentTeamPage(),
         ),
       );
     }
@@ -64,6 +64,7 @@ class _JoinTeamPageState extends State<JoinTeamPage> {
           children: [
             TextField(
               controller: _roomCodeController,
+              keyboardType: TextInputType.number,
               style: const TextStyle(color: Colors.white),
               decoration: const InputDecoration(
                       labelText: 'Enter Room Code',
