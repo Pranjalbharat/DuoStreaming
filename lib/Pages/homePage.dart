@@ -154,7 +154,7 @@ class _HomePageState extends State<HomePage> {
             // You can replace the Navigator logic with your specific routing method
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) =>  CurrentTeamPage()),
+              MaterialPageRoute(builder: (context) =>  CurrentTeamPage(roomCode: '',)),
             );
           }
         },

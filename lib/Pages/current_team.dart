@@ -4,7 +4,7 @@ import '../theme/theme_app.dart';
 
 
 class CurrentTeamPage extends StatelessWidget {
-  final String  roomCode = '1234'; // Replace this with the actual room code
+  // Replace this with the actual room code
   final List<String> teamMembers = [
     'John Doe',
     'Jane Smith',
@@ -12,7 +12,9 @@ class CurrentTeamPage extends StatelessWidget {
     'Bob Williams'
   ];
 
-   CurrentTeamPage({super.key}); // Replace this with actual team members
+    final String roomCode;
+
+  CurrentTeamPage({required this.roomCode, Key? key}) : super(key: key);// Replace this with actual team members
 
   @override
   Widget build(BuildContext context) {

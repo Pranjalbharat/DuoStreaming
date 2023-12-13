@@ -11,8 +11,12 @@ class CreateTeamPage extends StatelessWidget {
     'Alice Johnson',
     'Bob Williams'
   ];
+  
+    final String roomCode;
 
-   CreateTeamPage({super.key});
+
+  CreateTeamPage({required this.roomCode, Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {

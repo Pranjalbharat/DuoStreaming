@@ -1,9 +1,8 @@
-
 import 'package:flutter/material.dart';
-
 import '../Widget/custom_button.dart';
 import '../theme/theme_app.dart';
 import 'current_team.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class JoinTeamPage extends StatefulWidget {
   const JoinTeamPage({Key? key}) : super(key: key);
@@ -34,14 +33,36 @@ class _JoinTeamPageState extends State<JoinTeamPage> {
     });
   }
 
-    void _navigateToCurrentTeamPage() {
-    if (_isButtonEnabled) {
+  void _joinRoom() async {
+    final String roomCode = _roomCodeController.text.trim();
+    final CollectionReference rooms = FirebaseFirestore.instance.collection('rooms');
+
+    var roomSnapshot = await rooms.doc(roomCode).get();
+
+    if (roomSnapshot.exists) {
+      // Room exists, add the current user to the room's members
+      await rooms.doc(roomCode).update({
+        'members': FieldValue.arrayUnion(['Pranjal']), // Replace with the actual user ID
+      });
+
+      // Navigate to the CurrentTeamPage
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) =>  CurrentTeamPage(),
+          builder: (context) => CurrentTeamPage(roomCode: roomCode),
         ),
       );
+    } else {
+      // Room does not exist
+      // Handle the scenario when the room does not exist (e.g., show an error message)
+      // You can display a Snackbar or show an AlertDialog to inform the user
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Room does not exist!'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+
     }
   }
 
@@ -50,10 +71,14 @@ class _JoinTeamPageState extends State<JoinTeamPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Join Team'),
-        titleTextStyle: const TextStyle(fontSize: 25,
-        fontStyle: FontStyle.italic,
-        fontWeight: FontWeight.bold),
+        title: const Text(
+          'Join Team',
+          style: TextStyle(
+            fontSize: 25,
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         backgroundColor: PRIMARY_COLOR,
       ),
       body: Padding(
@@ -67,28 +92,28 @@ class _JoinTeamPageState extends State<JoinTeamPage> {
               keyboardType: TextInputType.number,
               style: const TextStyle(color: Colors.white),
               decoration: const InputDecoration(
-                      labelText: 'Enter Room Code',
-                      labelStyle: TextStyle(color: Colors.white),
-                      hintText: 'Enter valid room code',
-                      hintStyle: TextStyle(color: Colors.white),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          width: 3,
-                          color: PRIMARY_COLOR,
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          width: 3,
-                          color: PRIMARY_COLOR,
-                        ),
-                      ),
-                    ),
+                labelText: 'Enter Room Code',
+                labelStyle: TextStyle(color: Colors.white),
+                hintText: 'Enter valid room code',
+                hintStyle: TextStyle(color: Colors.white),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 3,
+                    color: PRIMARY_COLOR,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 3,
+                    color: PRIMARY_COLOR,
+                  ),
+                ),
+              ),
             ),
             const SizedBox(height: 20),
-          CustomButton(
+            CustomButton(
               text: 'Join',
-              onPressed: _navigateToCurrentTeamPage,
+              onPressed: _joinRoom,
             ),
           ],
         ),

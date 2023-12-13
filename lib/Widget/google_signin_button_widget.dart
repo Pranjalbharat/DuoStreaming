@@ -55,7 +55,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                 onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const roomPage()),
+                  MaterialPageRoute(builder: (context) => const RoomPage()),
                 );
                   // setState(() {
                   //   _isSigningIn = true;
