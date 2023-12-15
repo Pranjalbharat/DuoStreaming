@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "612187665184",
+    "project_id": "duostreaming-a7e93",
+    "storage_bucket": "duostreaming-a7e93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612187665184:android:bdfb8a9e4d491dc4675d45",
+        "android_client_info": {
+          "package_name": "com.example.duo_streaming"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612187665184-dct58qkpj6r9q8joeutndkum0upmopel.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.duo_streaming",
+            "certificate_hash": "b59745ff24a74a482a4612589934606fc140f84c"
+          }
+        },
+        {
+          "client_id": "612187665184-6dlee04otmdg47ikajgcg5243ip5n4c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtOv-XZ2lgfUlh6_q7kPyXz24rV2v2Iug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612187665184-6dlee04otmdg47ikajgcg5243ip5n4c9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "612187665184-k391a9poems69k381lk2na5tgiau9qma.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.duoStreaming.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../Pages/room_page.dart';
 
-// import '../Services/FireAuth Service/authentication.dart';
-// import '../pages/main_page.dart';
+import '../Pages/room_page.dart';
+import '../Services/authentication.dart';
 
 class GoogleSignInButton extends StatefulWidget {
   const GoogleSignInButton({super.key});
@@ -14,21 +13,22 @@ class GoogleSignInButton extends StatefulWidget {
 }
 
 class _GoogleSignInButtonState extends State<GoogleSignInButton> {
-  final bool _isSigningIn = false;
+  bool _isSigningIn = false;
 
-  // _check_login() {
-  //   if (Authenticate.isLoggedIn()) {
-  //     Navigator.of(context)
-  //         .push(MaterialPageRoute(builder: (context) => const MainPage()));
-  //   } else {
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       const SnackBar(
-  //         content: Text('Failed!'),
-  //         duration: Duration(seconds: 3), // Adjust the duration as needed
-  //       ),
-  //     );
-  //   }
-  // }
+  // ignore: non_constant_identifier_names
+  _check_login() {
+    if (Authenticate.isLoggedIn()) {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => const RoomPage()));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Failed!'),
+          duration: Duration(seconds: 3), // Adjust the duration as needed
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,30 +52,27 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                     ),
                   ),
                 ),
-                onPressed: () {
-                  Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const RoomPage()),
-                );
-                  // setState(() {
-                  //   _isSigningIn = true;
-                  // });
+                onPressed: () async{
+                
+                  setState(() {
+                    _isSigningIn = true;
+                  });
           
-                  // if (await Authenticate.continueWithGoogle()) {
-                  //   _check_login();
-                  // } else {
-                  //   ScaffoldMessenger.of(context).showSnackBar(
-                  //     const SnackBar(
-                  //       content: Text('Failed!'),
-                  //       duration:
-                  //           Duration(seconds: 3), // Adjust the duration as needed
-                  //     ),
-                  //   );
-                  // }
+                  if (await Authenticate.continueWithGoogle()) {
+                    _check_login();
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Failed!'),
+                        duration:
+                            Duration(seconds: 3), // Adjust the duration as needed
+                      ),
+                    );
+                  }
           
-                  // setState(() {
-                  //   _isSigningIn = false;
-                  // });
+                  setState(() {
+                    _isSigningIn = false;
+                  });
                 },
                   child: Container(
                     decoration: BoxDecoration(
